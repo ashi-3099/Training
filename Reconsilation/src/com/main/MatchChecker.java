@@ -18,12 +18,12 @@ public class MatchChecker {
 		List<Customer_Details> Customer_Details;
 
 		try {
-			//Reading BankData.csv file using openCSV parser
+			//Reading BankAccountData.csv file using openCSV parser
 			BankAccountData = new CsvToBeanBuilder<BankAccountData>(
 					new FileReader("C:\\Users\\ASHAGRAW\\OneDrive - Capgemini\\Desktop\\Reconsilation\\Resources\\Bank Account.csv")).withType(BankAccountData.class)
 							.withSkipLines(1).build().parse();
 
-			//Reading ClientData.csv file using openCSV parser
+			//Reading CustomerDetails.csv file using openCSV parser
 			Customer_Details= new CsvToBeanBuilder<Customer_Details>(
 					new FileReader("C:\\Users\\ASHAGRAW\\OneDrive - Capgemini\\Desktop\\Reconsilation\\Resources\\Customer_Details.csv"))
 							.withType(Customer_Details.class).withSkipLines(1).build().parse();
@@ -37,7 +37,7 @@ public class MatchChecker {
 			String[] header = {  "Customer_Name" , "Refund_Issued_Company", "Refund_Credited_Bank", "AmountDeficit", "AmountSurplus"};
 			comparisonData.add(header);
 			
-			//checking if the salary credited is deficit or surplus with respect to the actual salary
+			//checking if the amount credited is deficit or surplus with respect to the actual amount
 			for (int i = 0; i < Customer_Details.size(); i++) {
 				int amountDeficit = 0;
 				int amountSurplus = 0;
